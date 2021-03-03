@@ -12,9 +12,6 @@ public class PlayerHealth : MonoBehaviour
     [Header("Player Visualizer")]
     public HealthBar healthbar;
     public SpriteRenderer graphics;
-    public Text _EnemyKilled;
-    public Text _GemCount;
-    public Text _CherryCount;
     public float InvincibilityTime = 3f;
     public float InvincibilityFlashDelay = 0.15f;
     public bool isInvincible = false;
@@ -34,9 +31,6 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(20);
         }
         healthbar.setHealth(currentHealth);
-        _EnemyKilled.text = Inventory.instance.EnemiesKilledCount.ToString();
-        _GemCount.text = Inventory.instance.GemCount.ToString();
-        _CherryCount.text = Inventory.instance.CherryCount.ToString();
     }
 
     public void TakeDamage(int damage)

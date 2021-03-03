@@ -11,6 +11,7 @@ public class PickUpObject : MonoBehaviour
         if (collision.transform.gameObject.name == "Player" && gem)
         {
             Inventory.instance.AddGem(1);
+            AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.pickup);
             Destroy(gameObject);
         }
 
@@ -19,6 +20,7 @@ public class PickUpObject : MonoBehaviour
             PlayerHealth playerhealth = collision.transform.gameObject.GetComponent<PlayerHealth>();
             playerhealth.currentHealth += 10;
             Inventory.instance.AddCherry(1);
+            AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.shoot);
             Destroy(gameObject);
         }
     }
