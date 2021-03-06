@@ -8,7 +8,10 @@ public class DeathZone : MonoBehaviour
     {
         if (collision.transform.gameObject.name == "Player")
         {
-            Destroy(collision.gameObject);
+            CameraFollow.instance.deathzone = true;
+            PlayerHealth playerhealth = collision.transform.gameObject.GetComponent<PlayerHealth>();
+            playerhealth.currentHealth = 0;
+            playerhealth.Die();
         }
     }
 }

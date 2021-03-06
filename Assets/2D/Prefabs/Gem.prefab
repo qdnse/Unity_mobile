@@ -141,5 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94c5c62d5c9e7941a05cc98405e2f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cherry_points: 1
+  gem_points: 2
   cherry: 0
   gem: 1

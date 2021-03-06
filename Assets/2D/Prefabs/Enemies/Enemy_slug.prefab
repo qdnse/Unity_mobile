@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26d5f457d661d643b78cc24eb464e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 5
 --- !u!1 &1976394195431661498
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +81,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1976394195431661499}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_slug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
