@@ -145,3 +145,6 @@ MonoBehaviour:
   gem_points: 2
   cherry: 0
   gem: 1
+  cherry_color: {r: 0.990566, g: 0.35978103, b: 0.35978103, a: 0.78431374}
+  gem_color: {r: 0.9825358, g: 1, b: 0.34509802, a: 0.78431374}
+  prefab: {fileID: 789022678264154740, guid: a21a4566b4960c1468f79fc77a0e1672, type: 3}

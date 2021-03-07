@@ -68,6 +68,7 @@
     <Compile Include="Assets\2D\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\2D\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\2D\Scripts\DeathZone.cs" />
+    <Compile Include="Assets\2D\Scripts\EnemyJump.cs" />
     <Compile Include="Assets\2D\Scripts\EnemyPatrol.cs" />
     <Compile Include="Assets\2D\Scripts\GameManager.cs" />
     <Compile Include="Assets\2D\Scripts\HealthBar.cs" />

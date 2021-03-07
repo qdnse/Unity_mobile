@@ -9,6 +9,11 @@ public class PickUpObject : MonoBehaviour
     public bool cherry;
     public bool gem;
 
+    public Color cherry_color;
+    public Color gem_color;
+
+    [SerializeField] public GameObject prefab;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.gameObject.name == "Player" && gem)
@@ -17,7 +22,9 @@ public class PickUpObject : MonoBehaviour
             AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.pickup);
             GameManager.instance.Score(gem_points);
             gem = false;
-            Destroy(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().color = gem_color;
+            gameObject.GetComponent<Animator>().SetBool("PickedUp", true);
+            StartCoroutine(HandleDelay(1f));
         }
         
         if (collision.transform.gameObject.name == "Player" && cherry)
@@ -28,8 +35,17 @@ public class PickUpObject : MonoBehaviour
             AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.shoot);
             GameManager.instance.Score(cherry_points);
             cherry = false;
-            Destroy(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().color = cherry_color;
+            gameObject.GetComponent<Animator>().SetBool("PickedUp", true);
+            StartCoroutine(HandleDelay(1f));
         }
         
     }
+    
+    public IEnumerator HandleDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
+    }
+    
 }

@@ -13,5 +13,28 @@ public class DeathZone : MonoBehaviour
             playerhealth.currentHealth = 0;
             playerhealth.Die();
         }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<Animator>().SetBool("IsDead", true);
+
+            if (collision.GetComponent<EnemyPatrol>() != null)
+                collision.GetComponent<EnemyPatrol>().enabled = false;
+
+            if (collision.transform.parent.gameObject.GetComponent<Rigidbody2D>() != null)
+                collision.transform.parent.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic; ;
+
+            if (collision.GetComponent<EnemyJump>() != null)
+                collision.GetComponent<EnemyJump>().enabled = false;
+
+            collision.GetComponent<BoxCollider2D>().enabled = false;
+            collision.GetComponentInChildren<BoxCollider2D>().enabled = false;
+            StartCoroutine(HandleDelay(1f, collision.gameObject));
+        }
+    }
+    public IEnumerator HandleDelay(float delay, GameObject obj)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(obj.transform.parent.gameObject);
     }
 }
