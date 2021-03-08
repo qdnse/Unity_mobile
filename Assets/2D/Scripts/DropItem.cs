@@ -17,7 +17,7 @@ public class DropItem : MonoBehaviour
             if (Random.Range(0, 100) <= (DropChances % 100) || (DropChances % 100) == 0 ) {
                 GameObject childObject = Instantiate(Item) as GameObject;
                 childObject.transform.parent = Environment.transform;
-                childObject.transform.position = collision.gameObject.transform.position;
+                childObject.transform.position = gameObject.transform.parent.position;
             }
         }
     }

@@ -63,17 +63,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\2D\Script\Parallax.cs" />
     <Compile Include="Assets\2D\Scripts\AudioSystem.cs" />
     <Compile Include="Assets\2D\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\2D\Scripts\CharacterController2D.cs" />
+    <Compile Include="Assets\2D\Scripts\Chest.cs" />
     <Compile Include="Assets\2D\Scripts\DeathZone.cs" />
+    <Compile Include="Assets\2D\Scripts\Door.cs" />
+    <Compile Include="Assets\2D\Scripts\DropItem.cs" />
     <Compile Include="Assets\2D\Scripts\EnemyJump.cs" />
     <Compile Include="Assets\2D\Scripts\EnemyPatrol.cs" />
     <Compile Include="Assets\2D\Scripts\GameManager.cs" />
     <Compile Include="Assets\2D\Scripts\HealthBar.cs" />
     <Compile Include="Assets\2D\Scripts\Inventory.cs" />
     <Compile Include="Assets\2D\Scripts\MenuManagement.cs" />
+    <Compile Include="Assets\2D\Scripts\Parallax.cs" />
     <Compile Include="Assets\2D\Scripts\PickUpObject.cs" />
     <Compile Include="Assets\2D\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\2D\Scripts\PlayerMovement.cs" />
