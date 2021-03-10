@@ -43,7 +43,7 @@ public class DeathZone : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Instantiate(other.gameObject.GetComponent<PlayerManager>().particle, other.gameObject.transform.position, Quaternion.identity);
+            PlayerManager.instance.Player_Death();
             Destroy(other.gameObject);
         }
     }

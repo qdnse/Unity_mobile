@@ -17,6 +17,7 @@ public class MoveTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        nmAgent.SetDestination(Player.transform.position);
+        if (PlayerManager.instance.objectif_position != null)
+            nmAgent.SetDestination(PlayerManager.instance.Objectif_Position());
     }
 }

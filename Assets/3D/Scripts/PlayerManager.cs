@@ -9,6 +9,18 @@ public class PlayerManager : MonoBehaviour
 
     public float speed = 12f;
 
+    public static PlayerManager instance;
+
+    public Transform objectif_position;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            return;
+        }
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +38,15 @@ public class PlayerManager : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
 
         CameraFollow.instance.getPosition_threeD(gameObject.transform.position);
+    }
+
+    public void Player_Death()
+    {
+        Instantiate(particle, transform.position, Quaternion.identity);
+    }
+
+    public Vector3 Objectif_Position()
+    {
+        return objectif_position.position;
     }
 }
