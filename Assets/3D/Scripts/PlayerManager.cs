@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour
 
     public Transform objectif_position;
 
+    public GameObject target;
+
     private void Awake()
     {
         if (instance != null)
@@ -38,11 +40,27 @@ public class PlayerManager : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
 
         CameraFollow.instance.getPosition_threeD(gameObject.transform.position);
+        Vector3 mousePosition = Input.mousePosition;
+        Ray castPoint = Camera.main.ScreenPointToRay(mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
+        {
+            target.transform.position = hit.point;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
     }
 
     public void Player_Death()
     {
         Instantiate(particle, transform.position, Quaternion.identity);
+    }
+
+    public void Shoot()
+    {
+        Instantiate(target, target.transform.position, Quaternion.identity);
     }
 
     public Vector3 Objectif_Position()
