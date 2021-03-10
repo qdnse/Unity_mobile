@@ -11,7 +11,7 @@ public class WeakSpot : MonoBehaviour
         if (collision.transform.gameObject.name == "Player")
         {
             Inventory.instance.Enemykilled(1);
-            GameManager.instance.Score(points);
+            GameManager.instance.twoD_game.Score(points);
             transform.parent.gameObject.GetComponent<Animator>().SetBool("IsDead", true);
             if (transform.parent.gameObject.GetComponent<EnemyPatrol>() != null)
                 transform.parent.gameObject.GetComponent<EnemyPatrol>().enabled = false;

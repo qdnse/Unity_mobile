@@ -37,4 +37,14 @@ public class DeathZone : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(obj.transform.parent.gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            Instantiate(other.gameObject.GetComponent<PlayerManager>().particle, other.gameObject.transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+        }
+    }
 }

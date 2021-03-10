@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
         healthbar.setHealth(currentHealth);
 
         if (currentHealth > 0 && !CameraFollow.instance.deathzone)
-            CameraFollow.instance.getPosition(gameObject.transform.position);
+            CameraFollow.instance.getPosition_twoD(gameObject.transform.position);
     }
 
     public void TakeDamage(int damage)
@@ -60,7 +60,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-        GameManager.instance.isGameOver = true;
+        GameManager.instance.twoD_game.isGameOver = true;
         PlayerMovement.instance.enabled = false;
         gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
         PlayerMovement.instance.animator.SetTrigger("Die");

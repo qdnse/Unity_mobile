@@ -2139,6 +2139,7 @@ GameObject:
   - component: {fileID: 474718702}
   - component: {fileID: 474718701}
   - component: {fileID: 474718703}
+  - component: {fileID: 474718704}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameHandler
@@ -2158,13 +2159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2cff0ec0967974f9df9f6d67d1ca3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _EnemyKilled: {fileID: 458102125}
-  _GemCount: {fileID: 1230233825}
-  _CherryCount: {fileID: 583906352}
-  _Score: {fileID: 411058792}
-  _Time: {fileID: 1199078770}
-  isGameOver: 0
-  _score: 0
+  twoD_game: {fileID: 0}
 --- !u!4 &474718702
 Transform:
   m_ObjectHideFlags: 0
@@ -2194,6 +2189,25 @@ MonoBehaviour:
   GemCount: 0
   CherryCount: 0
   EnemiesKilledCount: 0
+--- !u!114 &474718704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474718700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf17e17211b33c449de9bbaf12a8a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _EnemyKilled: {fileID: 458102125}
+  _GemCount: {fileID: 1230233825}
+  _CherryCount: {fileID: 583906352}
+  _Score: {fileID: 411058792}
+  _Time: {fileID: 1199078770}
+  isGameOver: 0
+  _score: 0
 --- !u!1 &483449955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,7 +2547,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 474718701}
+      - m_Target: {fileID: 474718704}
         m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
@@ -85303,7 +85317,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 474718701}
+      - m_Target: {fileID: 474718704}
         m_MethodName: quitGame
         m_Mode: 1
         m_Arguments:
@@ -87027,7 +87041,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 474718701}
+      objectReference: {fileID: 474718704}
     - target: {fileID: 1236862644873788564, guid: 47187086b55e64444a15e1505fd5d967,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState

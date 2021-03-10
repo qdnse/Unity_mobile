@@ -27,9 +27,16 @@ public class CameraFollow : MonoBehaviour
     {
     }
 
-    public void getPosition(Vector3 pos)
+    public void getPosition_twoD(Vector3 pos)
     {
         pos.z = -10;
         gameObject.transform.position = pos;
+    }
+    public void getPosition_threeD(Vector3 pos)
+    {
+        pos.y += 12;
+        pos.z += -9;
+        gameObject.transform.position = pos;
+        gameObject.transform.localRotation = Quaternion.Euler(60, 0, 0);
     }
 }

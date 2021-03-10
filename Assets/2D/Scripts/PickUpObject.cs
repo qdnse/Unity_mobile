@@ -20,7 +20,7 @@ public class PickUpObject : MonoBehaviour
         {
             Inventory.instance.AddGem(1);
             AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.pickup);
-            GameManager.instance.Score(gem_points);
+            GameManager.instance.twoD_game.Score(gem_points);
             gem = false;
             gameObject.GetComponent<SpriteRenderer>().color = gem_color;
             gameObject.GetComponent<Animator>().SetBool("PickedUp", true);
@@ -33,7 +33,7 @@ public class PickUpObject : MonoBehaviour
             playerhealth.currentHealth += 10;
             Inventory.instance.AddCherry(1);
             AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.shoot);
-            GameManager.instance.Score(cherry_points);
+            GameManager.instance.twoD_game.Score(cherry_points);
             cherry = false;
             gameObject.GetComponent<SpriteRenderer>().color = cherry_color;
             gameObject.GetComponent<Animator>().SetBool("PickedUp", true);
