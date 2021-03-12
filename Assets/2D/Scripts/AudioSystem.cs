@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class AudioSystem : MonoBehaviour
 {
-    public AudioClip pickup;
-    public AudioClip shoot;
-    public AudioClip ambient;
+    [SerializeField] public AudioClip _pickup1;
+    [SerializeField] public AudioClip _pickup2;
+    [SerializeField] public AudioClip shoot;
+    [SerializeField] public AudioClip ambient;
 
-    public AudioSource source_effects;
-    public AudioSource source_ambient;
+    [SerializeField] public AudioSource source_effects;
+    [SerializeField] public AudioSource source_ambient;
 
-    public float volume_effects;
-    public float volume_ambient;
+    [SerializeField] public float volume_effects;
+    [SerializeField] public float volume_ambient;
 
     public static AudioSystem instance;
 
@@ -27,10 +28,6 @@ public class AudioSystem : MonoBehaviour
 
     public void Start()
     {
-        /*
-        source_effects = GetComponent<AudioSource>();
-        source_ambient = GetComponent<AudioSource>();
-        */
         source_ambient.volume = volume_ambient;
     }
 

@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class MoveTarget : MonoBehaviour
 {
-    public NavMeshAgent nmAgent;
-    public GameObject Player;
+    [SerializeField] public NavMeshAgent nmAgent;
+    [SerializeField] public GameObject Player;
 
     // Start is called before the first frame update
     void Start()

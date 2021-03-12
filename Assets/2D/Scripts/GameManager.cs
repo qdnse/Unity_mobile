@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public two_D twoD_game;
-    public three_D threeD_game;
+    [SerializeField] public two_D twoD_game;
+    [SerializeField] public three_D threeD_game;
 
     public static GameManager instance;
 

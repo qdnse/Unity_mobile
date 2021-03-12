@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class three_D : MonoBehaviour
 {
-    public Text _Score;
-    public Text _Time;
+    [SerializeField] public Text _Score;
+    [SerializeField] public Text _Time;
 
-    private float currenttime;
+    [SerializeField] private float currenttime;
 
     public static three_D instance;
 
@@ -25,6 +25,7 @@ public class three_D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioSystem.instance.AddAudio_Ambient(AudioSystem.instance.ambient);
     }
 
     // Update is called once per frame
@@ -41,6 +42,14 @@ public class three_D : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
             //Application.Quit();
         }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            UI_interaction.instance.StatDisplayer.SetActive(true);
+        } 
+        else 
+        {
+            UI_interaction.instance.StatDisplayer.SetActive(false);
+        }
         /*
         if (Input.GetButtonDown("Pause"))
         {
@@ -51,6 +60,7 @@ public class three_D : MonoBehaviour
             //Menu
         }
         */
+        Timedisplayer();
     }
 
     public void Timedisplayer()
@@ -62,25 +72,10 @@ public class three_D : MonoBehaviour
         float minutes = Mathf.Floor(currenttime / 60);
         float seconds = Mathf.RoundToInt(currenttime % 60);
 
-        if (minutes < 10)
-        {
-            _minutes = "0" + minutes.ToString();
-        }
-        else
-            _minutes = minutes.ToString("0");
-
-        if (seconds < 10)
-        {
-            _seconds = "0" + Mathf.RoundToInt(seconds).ToString();
-        }
-        else
-            _seconds = seconds.ToString("0");
+        _minutes = (minutes < 10 ? "0" + minutes.ToString() : minutes.ToString("0"));
+        _seconds = (seconds < 10 ? "0" + Mathf.RoundToInt(seconds).ToString() : seconds.ToString("0"));
 
         _Time.text = _minutes + ":" + _seconds;
-    }
-
-    public void Score(int points)
-    {
     }
 
     public void Retry()

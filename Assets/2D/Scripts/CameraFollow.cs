@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public bool deathzone;
+    [SerializeField] public bool deathzone;
+
     public static CameraFollow instance;
 
     private void Awake()

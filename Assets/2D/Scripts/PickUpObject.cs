@@ -19,7 +19,7 @@ public class PickUpObject : MonoBehaviour
         if (collision.transform.gameObject.name == "Player" && gem)
         {
             Inventory.instance.AddGem(1);
-            AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.pickup);
+            AudioSystem.instance.AddAudio_Effects(AudioSystem.instance._pickup1);
             GameManager.instance.twoD_game.Score(gem_points);
             gem = false;
             gameObject.GetComponent<SpriteRenderer>().color = gem_color;
