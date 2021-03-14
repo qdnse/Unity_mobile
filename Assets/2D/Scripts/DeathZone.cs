@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeathZone : MonoBehaviour
 {
+    // 2D GAME
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.gameObject.name == "Player")
@@ -38,10 +39,11 @@ public class DeathZone : MonoBehaviour
         Destroy(obj.transform.parent.gameObject);
     }
 
+    // 3D GAME
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !PlayerManager.instance.Shield_isActive)
         {
             PlayerManager.instance.Player_Death();
         }

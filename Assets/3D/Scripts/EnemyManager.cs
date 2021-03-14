@@ -24,7 +24,7 @@ public class EnemyManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !PlayerManager.instance.Shield_isActive)
         {
             PlayerManager.instance.TakeDamage(Damage);
         }

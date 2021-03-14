@@ -77,7 +77,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_64879AFA: {r: 0.14297795, g: 0.1478498, b: 0.16037738, a: 1}
-    - Vector2_AF01F46F: {r: 5, g: 5, b: 0, a: 0}
+    - Vector2_AF01F46F: {r: 15, g: 15, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
