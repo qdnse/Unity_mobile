@@ -33,6 +33,7 @@ public class UI_interaction : MonoBehaviour
     {
         Player_Stat();
         Player_Shield();
+        Player_Health();
     }
 
     public void Player_Stat()
@@ -45,24 +46,32 @@ public class UI_interaction : MonoBehaviour
         clone.transform.GetChild(4).transform.GetChild(1).GetComponent<Text>().text = PlayerManager.instance.Damage.ToString();
         clone.transform.GetChild(5).transform.GetChild(1).GetComponent<Text>().text = PlayerManager.instance.Speed.ToString();
     }
+    public void Player_Health()
+    {
+        HealthBar.maxValue = PlayerManager.instance.MaxHealth;
+        HealthBar.value = PlayerManager.instance.CurrentHealth;
+    }
 
     public void Player_Shield()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !PlayerManager.instance.Shield_isActive)
+        if (PlayerManager.instance.gameObject)
         {
-            PlayerManager.instance.Shield_isActive = true;
-        }
-        else if (PlayerManager.instance.Shield_isActive)
-        {
-            ShieldBar.maxValue = PlayerManager.instance.ShieldDuration;
-            ShieldBar.value -= 1 * Time.deltaTime;
-            StartCoroutine(Shield_Activated());
-            StartCoroutine(PlayerManager.instance.Shield_Duration());
-        }
-        else if (!PlayerManager.instance.Shield_isActive)
-        {
-            PlayerManager.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            ShieldBar.value += 1 * Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.E) && !PlayerManager.instance.Shield_isActive)
+            {
+                PlayerManager.instance.Shield_isActive = true;
+            }
+            else if (PlayerManager.instance.Shield_isActive)
+            {
+                ShieldBar.maxValue = PlayerManager.instance.ShieldDuration;
+                ShieldBar.value -= 1 * Time.deltaTime;
+                StartCoroutine(Shield_Activated());
+                StartCoroutine(PlayerManager.instance.Shield_Duration());
+            }
+            else if (!PlayerManager.instance.Shield_isActive)
+            {
+                PlayerManager.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                ShieldBar.value += 1 * Time.deltaTime;
+            }
         }
     }
 

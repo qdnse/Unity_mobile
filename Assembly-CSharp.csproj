@@ -84,6 +84,7 @@
     <Compile Include="Assets\2D\Scripts\two_D.cs" />
     <Compile Include="Assets\3D\Scripts\AmbiantLight.cs" />
     <Compile Include="Assets\3D\Scripts\Animator_System.cs" />
+    <Compile Include="Assets\3D\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\3D\Scripts\MoveTarget.cs" />
     <Compile Include="Assets\3D\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\3D\Scripts\UI_interaction.cs" />

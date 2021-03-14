@@ -44,7 +44,6 @@ public class DeathZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerManager.instance.Player_Death();
-            Destroy(other.gameObject);
         }
     }
 }

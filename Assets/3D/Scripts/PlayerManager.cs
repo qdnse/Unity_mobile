@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CurrentHealth = MaxHealth;
     }
 
     // Update is called once per frame
@@ -93,6 +94,17 @@ public class PlayerManager : MonoBehaviour
     //DEATH
     public void Player_Death()
     {
+        Destroy(gameObject);
         Instantiate(particle, transform.position, Quaternion.identity);
     }
+
+    public void TakeDamage(float damage)
+    {
+        CurrentHealth -= damage;
+        if (CurrentHealth <= 0)
+        {
+            Player_Death();
+        }
+    }
+
 }
