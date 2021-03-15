@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    public ParticleSystem particle;
+    [Header("Player Animation")]
+    [SerializeField] public ParticleSystem particle;
 
     [Header("Player Characteristics")]
     [SerializeField] public float MaxHealth = 100f;
@@ -94,17 +95,15 @@ public class PlayerManager : MonoBehaviour
     //DEATH
     public void Player_Death()
     {
+        Color color = gameObject.GetComponent<Renderer>().material.color;
         Destroy(gameObject);
-        Instantiate(particle, transform.position, Quaternion.identity);
+        ParticleSystem clone = Instantiate(particle, transform.position, Quaternion.identity);
+        clone.GetComponentInChildren<Renderer>().material.color = color;
     }
 
     public void TakeDamage(float damage)
     {
         CurrentHealth -= damage;
-        if (CurrentHealth <= 0)
-        {
-            Player_Death();
-        }
     }
 
 }

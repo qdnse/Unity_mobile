@@ -48,8 +48,13 @@ public class UI_interaction : MonoBehaviour
     }
     public void Player_Health()
     {
-        HealthBar.maxValue = PlayerManager.instance.MaxHealth;
+        if (HealthBar.maxValue != PlayerManager.instance.MaxHealth)
+            HealthBar.maxValue = PlayerManager.instance.MaxHealth;
         HealthBar.value = PlayerManager.instance.CurrentHealth;
+        if (PlayerManager.instance.CurrentHealth <= 0)
+        {
+            PlayerManager.instance.Player_Death();
+        }
     }
 
     public void Player_Shield()
