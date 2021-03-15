@@ -104,6 +104,7 @@ public class PlayerManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         CurrentHealth -= damage;
+        StartCoroutine(CameraFollow.instance.CameraShaking.Shake(.15f, .4f));
     }
 
 }

@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] public GameObject SpotLight;
 
     public static CameraFollow instance;
+    public CameraShaking CameraShaking;
 
     private void Awake()
     {
