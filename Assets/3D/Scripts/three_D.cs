@@ -8,8 +8,12 @@ public class three_D : MonoBehaviour
 {
     [SerializeField] public Text _Score;
     [SerializeField] public Text _Time;
+    [SerializeField] public GameObject _SpawnPointList;
+    [SerializeField] public GameObject _Enemy;
+    [SerializeField] public GameObject _EnemyList;
 
     [SerializeField] private float currenttime;
+    private int spawnRate = 200;
 
     public static three_D instance;
 
@@ -32,6 +36,7 @@ public class three_D : MonoBehaviour
     void Update()
     {
         InputManager();
+        SpawnManager();
     }
 
     void InputManager()
@@ -61,6 +66,23 @@ public class three_D : MonoBehaviour
         }
         */
         Timedisplayer();
+    }
+
+    void SpawnManager()
+    {
+        if (spawnRate >= 200)
+        {
+            SpawnEnemy();
+            spawnRate = 0;
+        }
+        spawnRate += 1;
+    }
+
+    void SpawnEnemy()
+    {
+        Transform spawn = _SpawnPointList.transform.GetChild(Random.Range(0, _SpawnPointList.transform.childCount));
+        GameObject clone = Instantiate(_Enemy, spawn.position, Quaternion.identity);
+        clone.transform.SetParent(_EnemyList.transform); 
     }
 
     public void Timedisplayer()

@@ -29,11 +29,6 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         Enemy_Health();
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            CurrentHealth -= 40;
-        }
     }
 
     public void Enemy_Health()
@@ -56,6 +51,11 @@ public class EnemyManager : MonoBehaviour
         ParticleSystem clone = Instantiate(particle, transform.position, Quaternion.identity);
         clone.GetComponentInChildren<Renderer>().material.color  = color;
 
+    }
+
+    public void TakeDamage(float damage)
+    {
+        CurrentHealth -= damage;
     }
 
     private void OnCollisionEnter(Collision other)

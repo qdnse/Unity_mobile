@@ -15,6 +15,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public float ShieldDuration = 2f;
     [SerializeField] public float Damage = 15f;
     [SerializeField] public float Speed = 6f;
+    
+    [SerializeField] private bool _shooting = false;
+    [SerializeField] private float _shootFrequency = 0.35f;
     //public int Ammunition = 15;
 
     [Header("Private Values")]
@@ -24,6 +27,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public CharacterController controller;
     [SerializeField] public Transform objectif_position;
     [SerializeField] public GameObject target;
+    [SerializeField] public GameObject bullet;
 
     public static PlayerManager instance;
 
@@ -71,19 +75,38 @@ public class PlayerManager : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         Ray castPoint = Camera.main.ScreenPointToRay(mousePosition);
         RaycastHit hit;
+        _shootFrequency -= 0.01f;
         if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
         {
-            target.transform.position = hit.point;
+            Vector3 point = hit.point;
+            point.y += 0.05f;
+            target.transform.position = point;
         }
         if (Input.GetMouseButtonDown(0))
         {
+            _shooting = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            _shooting = false;
+        }
+        if (_shooting && _shootFrequency <= 0) {
             Shoot();
+            _shootFrequency = 0.5f;
         }
     }
 
     public void Shoot()
     {
-        Instantiate(target, target.transform.position, Quaternion.identity);
+        AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.shoot);
+        Vector3 pos = gameObject.transform.position;
+        Vector2 to = new Vector2(target.transform.position.x, target.transform.position.z);
+        float angle = Mathf.Atan2(pos.z - to.y, pos.x - to.x) + Mathf.PI;
+        float z = Mathf.Sin(angle);
+        float x = Mathf.Cos(angle);
+        Vector3 vector = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle));
+        GameObject newBullet = Instantiate(bullet, pos + (vector * 1.05f), Quaternion.identity);
+        newBullet.GetComponent<bulletCollider>().dir = vector / 10;
     }
 
     //OBJECTIF
