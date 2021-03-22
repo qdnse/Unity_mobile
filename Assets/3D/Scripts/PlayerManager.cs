@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public float CurrentHealth = 0f;
     [SerializeField] public float Heal = 5f;
     [SerializeField] public float ShieldDuration = 2f;
-    [SerializeField] public float Damage = 15f;
+    [SerializeField] public float Damage = 50f;
     [SerializeField] public float Speed = 6f;
     
     [SerializeField] private bool _shooting = false;
