@@ -78,12 +78,6 @@ public class UI_interaction : MonoBehaviour
         Shop_BuyButton(_Shop.transform.GetChild(3).transform, 100);
         Shop_BuyButton(_Shop.transform.GetChild(4).transform, 50);
         Shop_BuyButton(_Shop.transform.GetChild(5).transform, 40);
-        _Shop.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.MaxHealth.ToString();
-        //_Shop.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.CurrentHealth.ToString();
-        _Shop.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.Heal.ToString();
-        _Shop.transform.GetChild(3).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.ShieldDuration.ToString();
-        _Shop.transform.GetChild(4).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.Damage.ToString();
-        _Shop.transform.GetChild(5).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.Speed.ToString();
     }
 
     public void Shop_BuyButton(Transform obj, int value)
@@ -149,44 +143,73 @@ public class UI_interaction : MonoBehaviour
     }
 
     public void UpgradeMaxHealth() {
-        PlayerManager.instance.CurrentMoney -= 50;
-        PlayerManager.instance.MaxHealth += 10;
-        PlayerManager.instance.CurrentHealth += 10;
+        if (PlayerManager.instance.CurrentMoney >= 50)
+        {
+            PlayerManager.instance.CurrentMoney -= 50;
+            PlayerManager.instance.MaxHealth += 10;
+            PlayerManager.instance.CurrentHealth += 10;
+        }
     }
 
-    public void UpgradeHealthRegen() {
-        PlayerManager.instance.CurrentMoney -= 100;
-        PlayerManager.instance.Heal += 1;
+    public void UpgradeHealthRegen()
+    {
+        if (PlayerManager.instance.CurrentMoney >= 100)
+        {
+            PlayerManager.instance.CurrentMoney -= 100;
+            PlayerManager.instance.Heal += 1;
+        }
     }
 
-    void UpgradeShootRate() {
-        PlayerManager.instance.Damage += 2;
+    void UpgradeShootRate()
+    {
+        if (PlayerManager.instance.CurrentMoney >= 50)
+        {
+            PlayerManager.instance.Damage += 2;
+        }
     }
 
-    public void UpgradeDamage() {
-        PlayerManager.instance.CurrentMoney -= 50;
-        PlayerManager.instance.Damage += 2;
+    public void UpgradeDamage()
+    {
+        if (PlayerManager.instance.CurrentMoney >= 50)
+        {
+            PlayerManager.instance.CurrentMoney -= 50;
+            PlayerManager.instance.Damage += 2;
+        }
     }
 
-    public void UpgradeSpeed() {
-        PlayerManager.instance.CurrentMoney -= 40;
-        PlayerManager.instance.Speed += 0.5f;
+    public void UpgradeSpeed()
+    {
+        if (PlayerManager.instance.CurrentMoney >= 40)
+        {
+            PlayerManager.instance.CurrentMoney -= 40;
+            PlayerManager.instance.Speed += 0.5f;
+        }
     }
 
-    void UpgradeMoneyMultiplier() {
+    void UpgradeMoneyMultiplier()
+    {
         PlayerManager.instance.MoneyMultiplier += +0.1f;
     }
 
-    void UpgradeShieldRegen() {
+    void UpgradeShieldRegen()
+    {
         PlayerManager.instance.Damage -= (PlayerManager.instance.Damage / 20);
     }
 
-    public void UpgradeShieldDuration() {
-        PlayerManager.instance.CurrentMoney -= 100;
-        PlayerManager.instance.ShieldDuration += 0.1f;
+    public void UpgradeShieldDuration()
+    {
+        if (PlayerManager.instance.CurrentMoney >= 100)
+        {
+            PlayerManager.instance.CurrentMoney -= 100;
+            PlayerManager.instance.ShieldDuration += 0.1f;
+        }
     }
 
-    public void Endgame() {
-        PlayerManager.instance.CurrentMoney -= 100000;
+    public void Endgame()
+    {
+        if (PlayerManager.instance.CurrentMoney >= 100000)
+        {
+            PlayerManager.instance.CurrentMoney -= 100000;
+        }
     }
 }

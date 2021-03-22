@@ -88,6 +88,7 @@
     <Compile Include="Assets\3D\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\3D\Scripts\MoveTarget.cs" />
     <Compile Include="Assets\3D\Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\3D\Scripts\PlayerShop.cs" />
     <Compile Include="Assets\3D\Scripts\UI_interaction.cs" />
     <Compile Include="Assets\3D\Scripts\bulletCollider.cs" />
     <Compile Include="Assets\3D\Scripts\dragNShoot.cs" />
