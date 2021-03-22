@@ -11,10 +11,12 @@ public class UI_interaction : MonoBehaviour
     [Header("Player UI")]
     [SerializeField] public Slider ShieldBar;
     [SerializeField] public Slider HealthBar;
+    [SerializeField] public Slider ExpBar;
     [SerializeField] public GameObject _Panel_Score_EnemyCount;
     [SerializeField] public GameObject _Pause;
     [SerializeField] public GameObject _Shop;
     [SerializeField] public GameObject _GameOver;
+    [SerializeField] public Text _Money;
     
     [Header("Shop")]
     [SerializeField] public Color[] button_color;
@@ -38,9 +40,11 @@ public class UI_interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _Money.text = PlayerManager.instance.CurrentMoney.ToString();
         Player_Stat();
         Player_Shield();
         Player_Health();
+        Player_Exp();
         Shop();
     }
 
@@ -63,15 +67,22 @@ public class UI_interaction : MonoBehaviour
     public void Shop()
     {
         Shop_BuyButton(_Shop.transform.GetChild(0).transform, 50);
-        Shop_BuyButton(_Shop.transform.GetChild(1).transform, 1);
-        Shop_BuyButton(_Shop.transform.GetChild(2).transform, 50);
-        Shop_BuyButton(_Shop.transform.GetChild(3).transform, 2);
-        Shop_BuyButton(_Shop.transform.GetChild(4).transform, 5);
-        Shop_BuyButton(_Shop.transform.GetChild(5).transform, 50);
+        Shop_BuyButton(_Shop.transform.GetChild(1).transform, 100000);
+        Shop_BuyButton(_Shop.transform.GetChild(2).transform, 100);
+        Shop_BuyButton(_Shop.transform.GetChild(3).transform, 100);
+        Shop_BuyButton(_Shop.transform.GetChild(4).transform, 50);
+        Shop_BuyButton(_Shop.transform.GetChild(5).transform, 40);
+        _Shop.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.MaxHealth.ToString();
+        //_Shop.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.CurrentHealth.ToString();
+        _Shop.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.Heal.ToString();
+        _Shop.transform.GetChild(3).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.ShieldDuration.ToString();
+        _Shop.transform.GetChild(4).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.Damage.ToString();
+        _Shop.transform.GetChild(5).GetChild(1).GetComponent<Text>().text = PlayerManager.instance.Speed.ToString();
     }
+
     public void Shop_BuyButton(Transform obj, int value)
     {
-        if (value == 50) { 
+        if (value <= PlayerManager.instance.CurrentMoney) { 
             obj.GetChild(4).GetComponent<Image>().color = button_color[1];
         }
         else
@@ -89,6 +100,13 @@ public class UI_interaction : MonoBehaviour
         {
             PlayerManager.instance.Player_Death();
         }
+    }
+
+    public void Player_Exp()
+    {
+        if (ExpBar.maxValue != PlayerManager.instance.MaxExp)
+            ExpBar.maxValue = PlayerManager.instance.MaxExp;
+        ExpBar.value = PlayerManager.instance.CurrentExp;
     }
 
     public void Player_Shield()
@@ -124,4 +142,44 @@ public class UI_interaction : MonoBehaviour
         }
     }
 
+    public void UpgradeMaxHealth() {
+        PlayerManager.instance.CurrentMoney -= 50;
+        PlayerManager.instance.MaxHealth += 10;
+    }
+
+    public void UpgradeHealthRegen() {
+        PlayerManager.instance.CurrentMoney -= 100;
+        PlayerManager.instance.Heal += 1;
+    }
+
+    void UpgradeShootRate() {
+        PlayerManager.instance.Damage += 2;
+    }
+
+    public void UpgradeDamage() {
+        PlayerManager.instance.CurrentMoney -= 50;
+        PlayerManager.instance.Damage += 2;
+    }
+
+    public void UpgradeSpeed() {
+        PlayerManager.instance.CurrentMoney -= 40;
+        PlayerManager.instance.Speed += 0.5f;
+    }
+
+    void UpgradeMoneyMultiplier() {
+        PlayerManager.instance.MoneyMultiplier += +0.1f;
+    }
+
+    void UpgradeShieldRegen() {
+        PlayerManager.instance.Damage -= (PlayerManager.instance.Damage / 20);
+    }
+
+    public void UpgradeShieldDuration() {
+        PlayerManager.instance.CurrentMoney -= 100;
+        PlayerManager.instance.ShieldDuration += 0.1f;
+    }
+
+    public void Endgame() {
+        PlayerManager.instance.CurrentMoney -= 100000;
+    }
 }

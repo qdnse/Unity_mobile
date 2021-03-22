@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Animator_System : MonoBehaviour
 {
@@ -28,16 +29,26 @@ public class Animator_System : MonoBehaviour
     public void Bt_Menu_Options()
     {
         animator.enabled = true;
-        animator.SetInteger("Menu_Options 0", 1); // ("Menu_Options", true);
-        HandleDelay(2f);
+        animator.SetBool("ToOption", true); // ("Menu_Options", true);
+        HandleDelay(1f);
     }
     public void Bt_Options_Menu()
     {
         animator.enabled = true;
-        animator.SetInteger("Menu_Options 0", 2);
-        HandleDelay(2f);
+        animator.SetBool("ToOption", false); // ("Menu_Options", true);
+        HandleDelay(1f);
     }
 
+    public void PlayScene() {
+        SceneManager.LoadScene("Terrain1");
+    }
+
+    public void QuitGame() {
+        // Editor
+        UnityEditor.EditorApplication.isPlaying = false;
+        // Runtime
+        //Application.Quit();
+    }
 
     public IEnumerator HandleDelay(float delay)
     {

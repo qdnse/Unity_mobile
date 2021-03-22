@@ -50,7 +50,8 @@ public class EnemyManager : MonoBehaviour
         Destroy(gameObject);
         ParticleSystem clone = Instantiate(particle, transform.position, Quaternion.identity);
         clone.GetComponentInChildren<Renderer>().material.color  = color;
-
+        PlayerManager.instance.AddExp(5f);
+        PlayerManager.instance.AddMoney(10f);
     }
 
     public void TakeDamage(float damage)

@@ -15,6 +15,14 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public float ShieldDuration = 2f;
     [SerializeField] public float Damage = 15f;
     [SerializeField] public float Speed = 6f;
+    [SerializeField] public float Level = 0f;
+    [SerializeField] public float CurrentExp = 0f;
+    [SerializeField] public float MaxExp = 5f;
+    [SerializeField] public float CurrentMoney = 0f;
+    [SerializeField] public float MoneyMultiplier = 1f;
+
+
+
     
     [SerializeField] private bool _shooting = false;
     [SerializeField] private float _shootFrequency = 0.35f;
@@ -113,6 +121,20 @@ public class PlayerManager : MonoBehaviour
     public Vector3 Objectif_Position()
     {
         return objectif_position.position;
+    }
+
+    public void AddMoney(float Money) {
+        CurrentMoney += (Money * MoneyMultiplier);
+    }
+
+    public void AddExp(float Exp) {
+        CurrentExp += Exp;
+        if (CurrentExp >= MaxExp) {
+            CurrentExp -= MaxExp;
+            Damage += 1;
+            Level += 1;
+            MaxExp += 5;
+        }
     }
 
     //DEATH
