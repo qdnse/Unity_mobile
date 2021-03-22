@@ -20,6 +20,9 @@ public class three_D : MonoBehaviour
     [SerializeField] public bool _isPaused = false;
 
     [SerializeField] private float currenttime;
+    
+    private int _maxEnemy = 6;
+    private int _spawnLeft = 0;
     private int spawnRate = 200;
 
     public static three_D instance;
@@ -49,7 +52,7 @@ public class three_D : MonoBehaviour
 
     void Display_EnemyCount()
     {
-        _EnemyCount.text = _EnemyList.transform.childCount.ToString() + " / "; // + Total of enemies
+        _EnemyCount.text = _EnemyList.transform.childCount.ToString() + " / " + (_spawnLeft + _EnemyList.transform.childCount).ToString();
     }
 
     void InputManager()
@@ -96,12 +99,19 @@ public class three_D : MonoBehaviour
 
     void SpawnManager()
     {
-        if (spawnRate >= 200)
+        if (_spawnLeft == 0 &&  _EnemyList.transform.childCount == 0)
+        {
+            _maxEnemy = (int)Mathf.Floor(_maxEnemy * 1.4f);
+            _spawnLeft = _maxEnemy;
+        }
+        if (spawnRate >= 200 && _spawnLeft > 0 && _EnemyList.transform.childCount < 12)
         {
             SpawnEnemy();
             spawnRate = 0;
+            _spawnLeft -= 1;
         }
-        spawnRate += 1;
+        if (!_isPaused)
+            spawnRate += 1;
     }
 
     void SpawnEnemy()

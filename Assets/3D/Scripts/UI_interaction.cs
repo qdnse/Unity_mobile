@@ -66,6 +66,12 @@ public class UI_interaction : MonoBehaviour
 
     public void Shop()
     {
+        Player_Stat_TMP(_Shop.transform.GetChild(0).transform, PlayerManager.instance.MaxHealth.ToString());
+        Player_Stat_TMP(_Shop.transform.GetChild(1).transform, PlayerManager.instance.CurrentHealth.ToString());
+        Player_Stat_TMP(_Shop.transform.GetChild(2).transform, PlayerManager.instance.Heal.ToString());
+        Player_Stat_TMP(_Shop.transform.GetChild(3).transform, PlayerManager.instance.ShieldDuration.ToString());
+        Player_Stat_TMP(_Shop.transform.GetChild(4).transform, PlayerManager.instance.Damage.ToString());
+        Player_Stat_TMP(_Shop.transform.GetChild(5).transform, PlayerManager.instance.Speed.ToString());
         Shop_BuyButton(_Shop.transform.GetChild(0).transform, 50);
         Shop_BuyButton(_Shop.transform.GetChild(1).transform, 100000);
         Shop_BuyButton(_Shop.transform.GetChild(2).transform, 100);
