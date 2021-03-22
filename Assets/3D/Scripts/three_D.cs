@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class three_D : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] public Text _Score;
+    [SerializeField] public Text _EnemyCount;
     [SerializeField] public Text _Time;
+
+    [Header("GameObjects")]
     [SerializeField] public GameObject _SpawnPointList;
     [SerializeField] public GameObject _Enemy;
     [SerializeField] public GameObject _EnemyList;
+
+
+    [SerializeField] public bool _isPaused = false;
 
     [SerializeField] private float currenttime;
     private int spawnRate = 200;
@@ -37,6 +44,12 @@ public class three_D : MonoBehaviour
     {
         InputManager();
         SpawnManager();
+        Display_EnemyCount();
+    }
+
+    void Display_EnemyCount()
+    {
+        _EnemyCount.text = _EnemyList.transform.childCount.ToString() + " / "; // + Total of enemies
     }
 
     void InputManager()
@@ -55,11 +68,24 @@ public class three_D : MonoBehaviour
         {
             UI_interaction.instance.StatDisplayer.SetActive(false);
         }
-        /*
-        if (Input.GetButtonDown("Pause"))
+
+        //if (Input.GetButtonDown("Pause"))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            //Pause
+            if (_isPaused)
+            {
+                Time.timeScale = 1;
+                UI_interaction.instance._Pause.SetActive(false);
+                _isPaused = false;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                UI_interaction.instance._Pause.SetActive(true);
+                _isPaused = true;
+            }
         }
+        /*
         if (Input.GetButtonDown("Menu"))
         {
             //Menu
@@ -80,9 +106,11 @@ public class three_D : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Transform spawn = _SpawnPointList.transform.GetChild(Random.Range(0, _SpawnPointList.transform.childCount));
-        GameObject clone = Instantiate(_Enemy, spawn.position, Quaternion.identity);
-        clone.transform.SetParent(_EnemyList.transform); 
+        if (!_isPaused) {
+            Transform spawn = _SpawnPointList.transform.GetChild(Random.Range(0, _SpawnPointList.transform.childCount));
+            GameObject clone = Instantiate(_Enemy, spawn.position, Quaternion.identity);
+            clone.transform.SetParent(_EnemyList.transform);
+        }
     }
 
     public void Timedisplayer()
@@ -97,7 +125,15 @@ public class three_D : MonoBehaviour
         _minutes = (minutes < 10 ? "0" + minutes.ToString() : minutes.ToString("0"));
         _seconds = (seconds < 10 ? "0" + Mathf.RoundToInt(seconds).ToString() : seconds.ToString("0"));
 
-        _Time.text = _minutes + ":" + _seconds;
+        if (PlayerManager.instance.gameObject.activeSelf && !_isPaused)
+            _Time.text = _minutes + ":" + _seconds;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        UI_interaction.instance._Pause.SetActive(false);
+        _isPaused = false;
     }
 
     public void Retry()
@@ -107,7 +143,7 @@ public class three_D : MonoBehaviour
 
     public void launchMenu()
     {
-        SceneManager.LoadScene("2DMenu");
+        SceneManager.LoadScene("3DMenu");
     }
     public void quitGame()
     {

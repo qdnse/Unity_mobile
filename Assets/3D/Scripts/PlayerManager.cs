@@ -119,9 +119,11 @@ public class PlayerManager : MonoBehaviour
     public void Player_Death()
     {
         Color color = gameObject.GetComponent<Renderer>().material.color;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         ParticleSystem clone = Instantiate(particle, transform.position, Quaternion.identity);
         clone.GetComponentInChildren<Renderer>().material.color = color;
+        UI_interaction.instance._Panel_Score_EnemyCount.SetActive(false);
+        UI_interaction.instance._GameOver.SetActive(true);
     }
 
     public void TakeDamage(float damage)
