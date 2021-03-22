@@ -98,15 +98,17 @@ public class PlayerManager : MonoBehaviour
 
     public void Shoot()
     {
-        AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.shoot);
-        Vector3 pos = gameObject.transform.position;
-        Vector2 to = new Vector2(target.transform.position.x, target.transform.position.z);
-        float angle = Mathf.Atan2(pos.z - to.y, pos.x - to.x) + Mathf.PI;
-        float z = Mathf.Sin(angle);
-        float x = Mathf.Cos(angle);
-        Vector3 vector = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle));
-        GameObject newBullet = Instantiate(bullet, pos + (vector * 1.05f), Quaternion.identity);
-        newBullet.GetComponent<bulletCollider>().dir = vector / 10;
+        if (!GameManager.instance.threeD_game._isPaused) {
+            AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.shoot);
+            Vector3 pos = gameObject.transform.position;
+            Vector2 to = new Vector2(target.transform.position.x, target.transform.position.z);
+            float angle = Mathf.Atan2(pos.z - to.y, pos.x - to.x) + Mathf.PI;
+            float z = Mathf.Sin(angle);
+            float x = Mathf.Cos(angle);
+            Vector3 vector = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle));
+            GameObject newBullet = Instantiate(bullet, pos + (vector * 1.05f), Quaternion.identity);
+            newBullet.GetComponent<bulletCollider>().dir = vector / 10;
+        }
     }
 
     //OBJECTIF

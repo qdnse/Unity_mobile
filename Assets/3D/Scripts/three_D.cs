@@ -52,7 +52,7 @@ public class three_D : MonoBehaviour
 
     void Display_EnemyCount()
     {
-        _EnemyCount.text = _EnemyList.transform.childCount.ToString() + " / " + (_spawnLeft + _EnemyList.transform.childCount).ToString(); // + Total of enemies
+        _EnemyCount.text = _EnemyList.transform.childCount.ToString() + " / " + (_spawnLeft + _EnemyList.transform.childCount).ToString();
     }
 
     void InputManager()
@@ -110,7 +110,8 @@ public class three_D : MonoBehaviour
             spawnRate = 0;
             _spawnLeft -= 1;
         }
-        spawnRate += 1;
+        if (!_isPaused)
+            spawnRate += 1;
     }
 
     void SpawnEnemy()
