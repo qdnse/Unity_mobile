@@ -151,6 +151,7 @@ public class UI_interaction : MonoBehaviour
     public void UpgradeMaxHealth() {
         PlayerManager.instance.CurrentMoney -= 50;
         PlayerManager.instance.MaxHealth += 10;
+        PlayerManager.instance.CurrentHealth += 10;
     }
 
     public void UpgradeHealthRegen() {
