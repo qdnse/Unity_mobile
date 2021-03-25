@@ -58587,10 +58587,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Score: {fileID: 0}
+  _EnemyCount: {fileID: 0}
   _Time: {fileID: 0}
   _SpawnPointList: {fileID: 0}
   _Enemy: {fileID: 6197288800643849923, guid: f6e84dce5e282574e85613227426bd36, type: 3}
   _EnemyList: {fileID: 0}
+  _isPaused: 0
   currenttime: 0
 --- !u!114 &1158149310
 MonoBehaviour:
@@ -58607,6 +58609,13 @@ MonoBehaviour:
   StatDisplayer: {fileID: 0}
   ShieldBar: {fileID: 0}
   HealthBar: {fileID: 0}
+  ExpBar: {fileID: 0}
+  _Panel_Score_EnemyCount: {fileID: 0}
+  _Pause: {fileID: 0}
+  _Shop: {fileID: 0}
+  _GameOver: {fileID: 0}
+  _Money: {fileID: 0}
+  button_color: []
 --- !u!4 &1158303892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6078234712136565484, guid: e725e3cd9a5ffb442af9ec47d62ba053,
