@@ -88,12 +88,6 @@ public class three_D : MonoBehaviour
                 _isPaused = true;
             }
         }
-        /*
-        if (Input.GetButtonDown("Menu"))
-        {
-            //Menu
-        }
-        */
         Timedisplayer();
     }
 

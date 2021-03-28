@@ -40,7 +40,7 @@ public class Animator_System : MonoBehaviour
     }
 
     public void PlayScene() {
-        SceneManager.LoadScene("Terrain1");
+        SceneManager.LoadScene("Survival");
     }
 
     public void QuitGame() {
