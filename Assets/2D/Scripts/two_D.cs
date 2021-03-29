@@ -58,8 +58,10 @@ public class two_D : MonoBehaviour
 
         if (Input.GetButtonDown("Escape"))
         {
-            UnityEditor.EditorApplication.isPlaying = false;
-            //Application.Quit();
+            // Editor
+            // UnityEditor.EditorApplication.isPlaying = false;
+            // Build
+            Application.Quit();
         }
         /*
         if (Input.GetButtonDown("Pause"))
@@ -114,7 +116,9 @@ public class two_D : MonoBehaviour
     }
     public void quitGame()
     {
-        //EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        // Editor
+        // UnityEditor.EditorApplication.isPlaying = false;
+        // Build
+        Application.Quit();
     }
 }

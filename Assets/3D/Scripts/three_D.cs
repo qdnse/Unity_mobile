@@ -60,8 +60,10 @@ public class three_D : MonoBehaviour
 
         if (Input.GetButtonDown("Escape"))
         {
-            UnityEditor.EditorApplication.isPlaying = false;
-            //Application.Quit();
+            // Editor
+            // UnityEditor.EditorApplication.isPlaying = false;
+            // Build
+            Application.Quit();
         }
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -151,7 +153,9 @@ public class three_D : MonoBehaviour
     }
     public void quitGame()
     {
-        //EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        // if (Application.isEditor)
+            // UnityEditor.EditorApplication.isPlaying = false;
+        if (Application.isPlaying)
+            Application.Quit();
     }
 }

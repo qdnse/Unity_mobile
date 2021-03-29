@@ -23,7 +23,9 @@ public class MenuManagement : MonoBehaviour
     }
     public void quitGame()
     {
-        //EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        // Editor
+        // UnityEditor.EditorApplication.isPlaying = false;
+        // Playing
+        Application.Quit();
     }
 }

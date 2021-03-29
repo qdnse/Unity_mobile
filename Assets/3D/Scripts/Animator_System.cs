@@ -45,9 +45,9 @@ public class Animator_System : MonoBehaviour
 
     public void QuitGame() {
         // Editor
-        UnityEditor.EditorApplication.isPlaying = false;
-        // Runtime
-        //Application.Quit();
+        // UnityEditor.EditorApplication.isPlaying = false;
+        // Build
+        Application.Quit();
     }
 
     public IEnumerator HandleDelay(float delay)
