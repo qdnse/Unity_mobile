@@ -28,6 +28,14 @@ public class AudioSystem : MonoBehaviour
 
     public void Start()
     {
+        source_effects.volume = volume_effects;
+        source_ambient.volume = volume_ambient;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        source_effects.volume = volume_effects;
         source_ambient.volume = volume_ambient;
     }
 

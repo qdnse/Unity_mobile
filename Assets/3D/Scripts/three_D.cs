@@ -20,7 +20,8 @@ public class three_D : MonoBehaviour
     [SerializeField] public bool _isPaused = false;
 
     [SerializeField] private float currenttime;
-    
+
+    public int _score = 0;
     private int _maxEnemy = 6;
     private int _spawnLeft = 0;
     private int spawnRate = 200;
@@ -48,6 +49,7 @@ public class three_D : MonoBehaviour
         InputManager();
         SpawnManager();
         Display_EnemyCount();
+        _Score.text = _score.ToString();
     }
 
     void Display_EnemyCount()
@@ -77,20 +79,26 @@ public class three_D : MonoBehaviour
         //if (Input.GetButtonDown("Pause"))
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (_isPaused)
-            {
-                Time.timeScale = 1;
-                UI_interaction.instance._Pause.SetActive(false);
-                _isPaused = false;
-            }
-            else
-            {
-                Time.timeScale = 0;
-                UI_interaction.instance._Pause.SetActive(true);
-                _isPaused = true;
-            }
+            Pause_Game();
         }
         Timedisplayer();
+    }
+
+    public void Pause_Game()
+    {
+        if (_isPaused)
+        {
+            Time.timeScale = 1;
+            UI_interaction.instance._Pause.SetActive(false);
+            UI_interaction.instance._Options.SetActive(false);
+            _isPaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            UI_interaction.instance._Pause.SetActive(true);
+            _isPaused = true;
+        }
     }
 
     void SpawnManager()

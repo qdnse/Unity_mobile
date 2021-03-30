@@ -148,6 +148,8 @@ public class PlayerManager : MonoBehaviour
         clone.GetComponentInChildren<Renderer>().material.color = color;
         UI_interaction.instance._Panel_Score_EnemyCount.SetActive(false);
         UI_interaction.instance._GameOver.SetActive(true);
+        UI_interaction.instance._GameOver_Score.text = "Score: " + GameManager.instance.threeD_game._score.ToString();
+
     }
 
     public void TakeDamage(float damage)

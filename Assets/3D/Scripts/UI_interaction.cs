@@ -14,10 +14,13 @@ public class UI_interaction : MonoBehaviour
     [SerializeField] public Slider ExpBar;
     [SerializeField] public GameObject _Panel_Score_EnemyCount;
     [SerializeField] public GameObject _Pause;
+    [SerializeField] public GameObject _Options;
     [SerializeField] public GameObject _Shop;
     [SerializeField] public GameObject _GameOver;
     [SerializeField] public Text _Money;
-    
+    [SerializeField] public Text _Score;
+    [SerializeField] public Text _GameOver_Score;
+
     [Header("Shop")]
     [SerializeField] public Color[] button_color;
 
@@ -34,7 +37,8 @@ public class UI_interaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _Options.transform.Find("Audio").Find("Effect").Find("Slider").GetComponent<Slider>().value = AudioSystem.instance.volume_effects;
+        _Options.transform.Find("Audio").Find("Ambient").Find("Slider").GetComponent<Slider>().value = AudioSystem.instance.volume_ambient;
     }
 
     // Update is called once per frame
@@ -46,6 +50,13 @@ public class UI_interaction : MonoBehaviour
         Player_Health();
         Player_Exp();
         Shop();
+        OptionsManager();
+    }
+
+    public void OptionsManager()
+    {
+        AudioSystem.instance.volume_effects = _Options.transform.Find("Audio").Find("Effect").Find("Slider").GetComponent<Slider>().value;
+        AudioSystem.instance.volume_ambient = _Options.transform.Find("Audio").Find("Ambient").Find("Slider").GetComponent<Slider>().value;
     }
 
     public void Player_Stat()

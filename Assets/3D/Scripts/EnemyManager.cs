@@ -13,6 +13,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] public float CurrentHealth = 0f;
     [SerializeField] public float Damage;
     [SerializeField] public float Speed = 6f;
+    [SerializeField] public int value = 5;
 
     [Header("Enemy UI")]
     [SerializeField] public Slider HealthBar;
@@ -52,6 +53,7 @@ public class EnemyManager : MonoBehaviour
         clone.GetComponentInChildren<Renderer>().material.color  = color;
         PlayerManager.instance.AddExp(5f);
         PlayerManager.instance.AddMoney(10f);
+        GameManager.instance.threeD_game._score += value;
     }
 
     public void TakeDamage(float damage)
