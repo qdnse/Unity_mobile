@@ -20,6 +20,7 @@ public class UI_interaction : MonoBehaviour
     [SerializeField] public Text _Money;
     [SerializeField] public Text _Score;
     [SerializeField] public Text _GameOver_Score;
+    [SerializeField] public Slider TowerDefenseBar;
 
     [Header("Shop")]
     [SerializeField] public Color[] button_color;
@@ -45,6 +46,7 @@ public class UI_interaction : MonoBehaviour
     void Update()
     {
         _Money.text = PlayerManager.instance.CurrentMoney.ToString();
+        Tower_Defense_Health();
         Player_Stat();
         Player_Shield();
         Player_Health();
@@ -110,6 +112,14 @@ public class UI_interaction : MonoBehaviour
         if (PlayerManager.instance.CurrentHealth <= 0 && PlayerManager.instance.gameObject.activeSelf)
         {
             PlayerManager.instance.Player_Death();
+        }
+    }
+    public void Tower_Defense_Health()
+    {
+        if (GameManager.instance.threeD_game.Tower_Defense) {
+            if (TowerDefenseBar.maxValue != TD_Manager.instance.MaxHealth)
+                TowerDefenseBar.maxValue = TD_Manager.instance.MaxHealth;
+            TowerDefenseBar.value = TD_Manager.instance.CurrentHealth;
         }
     }
 

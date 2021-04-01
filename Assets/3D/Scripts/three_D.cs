@@ -21,6 +21,9 @@ public class three_D : MonoBehaviour
 
     [SerializeField] private float currenttime;
 
+    [Header("Tower Defense Mod")]
+    [SerializeField] public bool Tower_Defense;
+
     public int _score = 0;
     private int _maxEnemy = 6;
     private int _spawnLeft = 0;
@@ -41,6 +44,13 @@ public class three_D : MonoBehaviour
     void Start()
     {
         AudioSystem.instance.AddAudio_Ambient(AudioSystem.instance.ambient);
+        if (Tower_Defense)
+        {
+            if (UI_interaction.instance.TowerDefenseBar != null)
+            {
+                //UI_interaction.instance.TowerDefenseBar. = true;
+            }
+        }
     }
 
     // Update is called once per frame

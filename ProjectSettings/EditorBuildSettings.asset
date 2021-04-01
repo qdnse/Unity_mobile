@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3D/Scenes/Survival.unity
     guid: ad818958e21e7d8479dced3ce509b66d
+  - enabled: 1
+    path: Assets/3D/Scenes/TowerDefense.unity
+    guid: a4836e605ce372c49bf8b83eb9fea310
   m_configObjects: {}

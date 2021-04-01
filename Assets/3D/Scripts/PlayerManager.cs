@@ -22,8 +22,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public float MoneyMultiplier = 1f;
 
 
-
-    
     [SerializeField] private bool _shooting = false;
     [SerializeField] private float _shootFrequency = 0.35f;
     //public int Ammunition = 15;
@@ -149,7 +147,6 @@ public class PlayerManager : MonoBehaviour
         UI_interaction.instance._Panel_Score_EnemyCount.SetActive(false);
         UI_interaction.instance._GameOver.SetActive(true);
         UI_interaction.instance._GameOver_Score.text = "Score: " + GameManager.instance.threeD_game._score.ToString();
-
     }
 
     public void TakeDamage(float damage)
