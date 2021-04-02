@@ -29,6 +29,8 @@ public class three_D : MonoBehaviour
     private int _spawnLeft = 0;
     private int spawnRate = 200;
 
+    public bool mobile;
+
     public static three_D instance;
 
     private void Awake()
@@ -44,12 +46,9 @@ public class three_D : MonoBehaviour
     void Start()
     {
         AudioSystem.instance.AddAudio_Ambient(AudioSystem.instance.ambient);
-        if (Tower_Defense)
+        if (Application.platform == RuntimePlatform.Android)
         {
-            if (UI_interaction.instance.TowerDefenseBar != null)
-            {
-                //UI_interaction.instance.TowerDefenseBar. = true;
-            }
+            mobile = true;
         }
     }
 
@@ -101,12 +100,14 @@ public class three_D : MonoBehaviour
             Time.timeScale = 1;
             UI_interaction.instance._Pause.SetActive(false);
             UI_interaction.instance._Options.SetActive(false);
+            UI_interaction.instance._JoySticks.SetActive(true);
             _isPaused = false;
         }
         else
         {
             Time.timeScale = 0;
             UI_interaction.instance._Pause.SetActive(true);
+            UI_interaction.instance._JoySticks.SetActive(false);
             _isPaused = true;
         }
     }
@@ -157,6 +158,7 @@ public class three_D : MonoBehaviour
     {
         Time.timeScale = 1;
         UI_interaction.instance._Pause.SetActive(false);
+        UI_interaction.instance._JoySticks.SetActive(true);
         _isPaused = false;
     }
 

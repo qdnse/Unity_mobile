@@ -51,34 +51,55 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         CurrentHealth = MaxHealth;
+        if (GameManager.instance.threeD_game.mobile)
+        {
+            UI_interaction.instance._JoySticks.SetActive(true);
+        }
+        else
+        {
+            UI_interaction.instance._JoySticks.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         Player_Movement();
-        TargetSystem();
+        CheckPlatform();
     }
 
     //PLAYER
     public void Player_Movement()
     {
-        /* 
-        ** Computer Controls
-        
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        
-        */
-
-        VariableJoystick movement = directionnalStick.GetComponent<VariableJoystick>();
-        
-        float x = movement.Horizontal;
-        float z =  movement.Vertical;
+        float x;
+        float z;
+        if (GameManager.instance.threeD_game.mobile)
+        {
+            VariableJoystick movement = directionnalStick.GetComponent<VariableJoystick>();
+            x = movement.Horizontal;
+            z = movement.Vertical;
+        }
+        else
+        {
+            x = Input.GetAxis("Horizontal");
+            z = Input.GetAxis("Vertical");
+        }
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * Speed * Time.deltaTime);
         CameraFollow.instance.getPosition_threeD(gameObject.transform.position);
+    }
+
+    public void CheckPlatform()
+    {
+        if (GameManager.instance.threeD_game.mobile)
+        {
+            TargetSystemMobile();
+        }
+        else
+        {
+            TargetSystemPC();
+        }
     }
 
     public IEnumerator Shield_Duration()
@@ -87,52 +108,78 @@ public class PlayerManager : MonoBehaviour
         Shield_isActive = false;
     }
 
-    //SHOOT
-    public void TargetSystem()
+    //SHOOT MOBILE
+    public void TargetSystemMobile()
     {
-        /*
-        ** Computer Control
-        Vector3 mousePosition = Input.mousePosition;
-        Ray castPoint = Camera.main.ScreenPointToRay(mousePosition);
-        RaycastHit hit;
-        */
-
-        VariableJoystick movement = shootStick.GetComponent<VariableJoystick>();
+        VariableJoystick shoot = shootStick.GetComponent<VariableJoystick>();
         
-        float x = movement.Horizontal;
-        float z =  movement.Vertical;
-        
+        float x = shoot.Horizontal;
+        float z = shoot.Vertical;
         _shootFrequency -= 0.01f;
-        
-        /* if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
-        {
-            Vector3 point = hit.point;
-            point.y += 0.05f;
-            target.transform.position = point;
-        }
-        */
-        
         if (x != 0.0f || z != 0.0f)
         {
             _shooting = true;
         }
-        
         if (x == 0.0f && z == 0.0f)
         {
             _shooting = false;
         }
         if (_shooting && _shootFrequency <= 0) {
-            Shoot(x, z);
+            ShootMobile(x, z);
             _shootFrequency = 0.5f;
         }
     }
 
-    public void Shoot(float xShoot, float zShoot)
+    public void ShootMobile(float xShoot, float zShoot)
     {
         if (!GameManager.instance.threeD_game._isPaused) {
             AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.shoot);
             Vector3 pos = gameObject.transform.position;
             Vector2 to = new Vector2(pos.x + xShoot, pos.z + zShoot);
+            float angle = Mathf.Atan2(pos.z - to.y, pos.x - to.x) + Mathf.PI;
+            float z = Mathf.Sin(angle);
+            float x = Mathf.Cos(angle);
+            Vector3 vector = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle));
+            GameObject newBullet = Instantiate(bullet, pos + (vector * 1.05f), Quaternion.identity);
+            newBullet.GetComponent<bulletCollider>().dir = vector / 10;
+        }
+    }
+
+    //SHOOT MOBILE
+    public void TargetSystemPC()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        Ray castPoint = Camera.main.ScreenPointToRay(mousePosition);
+        RaycastHit hit;
+        _shootFrequency -= 0.01f;
+        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
+        {
+            Vector3 point = hit.point;
+            point.y += 0.05f;
+            target.transform.position = point;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            _shooting = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            _shooting = false;
+        }
+        if (_shooting && _shootFrequency <= 0)
+        {
+            ShootPC();
+            _shootFrequency = 0.5f;
+        }
+    }
+
+    public void ShootPC()
+    {
+        if (!GameManager.instance.threeD_game._isPaused)
+        {
+            AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.shoot);
+            Vector3 pos = gameObject.transform.position;
+            Vector2 to = new Vector2(target.transform.position.x, target.transform.position.z);
             float angle = Mathf.Atan2(pos.z - to.y, pos.x - to.x) + Mathf.PI;
             float z = Mathf.Sin(angle);
             float x = Mathf.Cos(angle);

@@ -17,6 +17,7 @@ public class UI_interaction : MonoBehaviour
     [SerializeField] public GameObject _Options;
     [SerializeField] public GameObject _Shop;
     [SerializeField] public GameObject _GameOver;
+    [SerializeField] public GameObject _JoySticks;
     [SerializeField] public Text _Money;
     [SerializeField] public Text _Score;
     [SerializeField] public Text _GameOver_Score;
