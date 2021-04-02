@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3dc5a68024f2b9a4d990157e7fa29c01, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: b43ab6fde3477e341af75efa982a4c94, type: 2}
 --- !u!1 &586949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1184,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6078234712136565484, guid: e725e3cd9a5ffb442af9ec47d62ba053,
     type: 3}
   m_PrefabInstance: {fileID: 235293116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &82045294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
+    type: 3}
+  m_PrefabInstance: {fileID: 1111029594}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &82864461 stripped
 Transform:
@@ -9532,6 +9538,8 @@ MonoBehaviour:
   objectif_position: {fileID: 548497294}
   target: {fileID: 1901579327}
   bullet: {fileID: 4571735903482491148, guid: 71ff73f138d91554abb23e55b3bc630b, type: 3}
+  directionnalStick: {fileID: 636784057}
+  shootStick: {fileID: 82045294}
 --- !u!143 &548497299
 CharacterController:
   m_ObjectHideFlags: 0
@@ -11340,6 +11348,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6078234712136565484, guid: e725e3cd9a5ffb442af9ec47d62ba053,
     type: 3}
   m_PrefabInstance: {fileID: 1940653014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &636784057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
+    type: 3}
+  m_PrefabInstance: {fileID: 1830040431}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &636793956 stripped
 Transform:

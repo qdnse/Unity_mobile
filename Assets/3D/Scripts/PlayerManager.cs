@@ -34,6 +34,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public Transform objectif_position;
     [SerializeField] public GameObject target;
     [SerializeField] public GameObject bullet;
+    [SerializeField] public GameObject directionnalStick;
+    [SerializeField] public GameObject shootStick;
 
     public static PlayerManager instance;
 
@@ -61,8 +63,18 @@ public class PlayerManager : MonoBehaviour
     //PLAYER
     public void Player_Movement()
     {
+        /* 
+        ** Computer Controls
+        
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        
+        */
+
+        VariableJoystick movement = directionnalStick.GetComponent<VariableJoystick>();
+        
+        float x = movement.Horizontal;
+        float z =  movement.Vertical;
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * Speed * Time.deltaTime);
@@ -78,36 +90,49 @@ public class PlayerManager : MonoBehaviour
     //SHOOT
     public void TargetSystem()
     {
+        /*
+        ** Computer Control
         Vector3 mousePosition = Input.mousePosition;
         Ray castPoint = Camera.main.ScreenPointToRay(mousePosition);
         RaycastHit hit;
+        */
+
+        VariableJoystick movement = shootStick.GetComponent<VariableJoystick>();
+        
+        float x = movement.Horizontal;
+        float z =  movement.Vertical;
+        
         _shootFrequency -= 0.01f;
-        if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
+        
+        /* if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
         {
             Vector3 point = hit.point;
             point.y += 0.05f;
             target.transform.position = point;
         }
-        if (Input.GetMouseButtonDown(0))
+        */
+        
+        if (x != 0.0f || z != 0.0f)
         {
             _shooting = true;
         }
-        if (Input.GetMouseButtonUp(0))
+        
+        if (x == 0.0f && z == 0.0f)
         {
             _shooting = false;
         }
         if (_shooting && _shootFrequency <= 0) {
-            Shoot();
+            Shoot(x, z);
             _shootFrequency = 0.5f;
         }
     }
 
-    public void Shoot()
+    public void Shoot(float xShoot, float zShoot)
     {
         if (!GameManager.instance.threeD_game._isPaused) {
             AudioSystem.instance.AddAudio_Effects(AudioSystem.instance.shoot);
             Vector3 pos = gameObject.transform.position;
-            Vector2 to = new Vector2(target.transform.position.x, target.transform.position.z);
+            Vector2 to = new Vector2(pos.x + xShoot, pos.z + zShoot);
             float angle = Mathf.Atan2(pos.z - to.y, pos.x - to.x) + Mathf.PI;
             float z = Mathf.Sin(angle);
             float x = Mathf.Cos(angle);
