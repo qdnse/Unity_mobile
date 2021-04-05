@@ -11,7 +11,7 @@ public class MoveTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        nmAgent.speed = gameObject.GetComponent<EnemyManager>().Speed;
     }
 
     // Update is called once per frame

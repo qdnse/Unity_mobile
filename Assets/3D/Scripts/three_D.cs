@@ -14,6 +14,9 @@ public class three_D : MonoBehaviour
     [Header("GameObjects")]
     [SerializeField] public GameObject _SpawnPointList;
     [SerializeField] public GameObject _Enemy;
+    [SerializeField] public GameObject _Shooter;
+    [SerializeField] public GameObject _Tank;
+    [SerializeField] public GameObject _Fast;
     [SerializeField] public GameObject _EnemyList;
 
 
@@ -131,9 +134,10 @@ public class three_D : MonoBehaviour
 
     void SpawnEnemy()
     {
+        var enemies = new List<GameObject>() { _Enemy, _Shooter, _Tank, _Fast };
         if (!_isPaused) {
             Transform spawn = _SpawnPointList.transform.GetChild(Random.Range(0, _SpawnPointList.transform.childCount));
-            GameObject clone = Instantiate(_Enemy, spawn.position, Quaternion.identity);
+            GameObject clone = Instantiate(enemies[Random.Range(0, 4)], spawn.position, Quaternion.identity);
             clone.transform.SetParent(_EnemyList.transform);
         }
     }
