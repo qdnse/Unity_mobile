@@ -153,6 +153,13 @@ public class UI_interaction : MonoBehaviour
             }
         }
     }
+    public void Player_Shield_Activated()
+    {
+        if (!PlayerManager.instance.Shield_isActive)
+        {
+            PlayerManager.instance.Shield_isActive = true;
+        }
+    }
 
     public IEnumerator Shield_Activated()
     {
