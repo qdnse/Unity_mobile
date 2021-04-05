@@ -1,10 +1,4 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.4.20f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.4.20f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 Cmd: compileSnippet
-  error: 1 plat 4 at (1496): pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them\nCompiling Fragment program with UNITY_PASS_META
-Platform defines: UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING
-  error: 1 plat 4 at (1792): implicit truncation of vector type\nCompiling Fragment program with UNITY_PASS_META
-Platform defines: UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING
-  error: 1 plat 4 at Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl(72): 'MetaVertexPosition': implicit truncation of vector type\nCompiling Fragment program with UNITY_PASS_META
-Platform defines: UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING
-  api=4 type=1 insize=26763 outsize=8614 kw=UNITY_PASS_META pd=UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING ok=1
+  api=4 type=1 insize=20931 outsize=426 kw= pd=UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING ok=1

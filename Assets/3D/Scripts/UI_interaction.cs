@@ -239,6 +239,9 @@ public class UI_interaction : MonoBehaviour
         if (PlayerManager.instance.CurrentMoney >= 100000)
         {
             PlayerManager.instance.CurrentMoney -= 100000;
+            GameManager.instance.threeD_game._score += 50000;
+            GameManager.instance.threeD_game.Resume();
+            PlayerManager.instance.Player_Death();
         }
     }
 }

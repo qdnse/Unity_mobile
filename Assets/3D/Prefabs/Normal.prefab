@@ -299,8 +299,8 @@ GameObject:
   - component: {fileID: 6197288800643849931}
   - component: {fileID: 6197288800643849929}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Untagged
+  m_Name: Normal
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,6 +523,7 @@ MonoBehaviour:
   CurrentHealth: 0
   Damage: 15
   Speed: 6
+  value: 10
   HealthBar: {fileID: 6197288799455386830}
   canvas: {fileID: 6197288801113634003}
 --- !u!1 &6197288801113634007

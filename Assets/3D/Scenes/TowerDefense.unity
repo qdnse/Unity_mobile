@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -53077,9 +53077,10 @@ MonoBehaviour:
   _Time: {fileID: 165856449}
   _SpawnPointList: {fileID: 1788776466}
   _Enemy: {fileID: 6197288800643849923, guid: f6e84dce5e282574e85613227426bd36, type: 3}
-  _Shooter: {fileID: 0}
-  _Tank: {fileID: 0}
-  _Fast: {fileID: 0}
+  _Shooter: {fileID: 6197288800643849923, guid: 7bb8dd5f3c87b604383827d8642e3fbd,
+    type: 3}
+  _Tank: {fileID: 6197288800643849923, guid: 0df77f8868702c6468bd21b1988e4021, type: 3}
+  _Fast: {fileID: 6197288800643849923, guid: 2631d9e205c500b41a869ae5eec6e038, type: 3}
   _EnemyList: {fileID: 1041295861}
   _isPaused: 0
   currenttime: 0

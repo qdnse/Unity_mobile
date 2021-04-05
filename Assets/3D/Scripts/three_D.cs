@@ -164,7 +164,8 @@ public class three_D : MonoBehaviour
     {
         Time.timeScale = 1;
         UI_interaction.instance._Pause.SetActive(false);
-        UI_interaction.instance._JoySticks.SetActive(true);
+        if (mobile)
+            UI_interaction.instance._JoySticks.SetActive(true);
         _isPaused = false;
     }
 

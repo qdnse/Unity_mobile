@@ -28,7 +28,7 @@ public class bulletCollider : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == "Enemy(Clone)")
+        if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<EnemyManager>().TakeDamage(PlayerManager.instance.Damage);
         }
