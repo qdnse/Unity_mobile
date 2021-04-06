@@ -53,6 +53,8 @@ public class three_D : MonoBehaviour
         {
             mobile = true;
         }
+        if (mobile)
+            UI_interaction.instance._JoySticks.SetActive(true);
     }
 
     // Update is called once per frame

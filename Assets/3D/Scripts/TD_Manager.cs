@@ -57,7 +57,7 @@ public class TD_Manager : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == "Enemy(Clone)")
+        if (other.gameObject.tag == "Enemy")
         {
             Destroy(other.gameObject);
             CurrentHealth -= 5;

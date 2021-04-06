@@ -1,14 +1,22 @@
-Base path: 'C:/Program Files/Unity/Hub/Editor/2019.4.20f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.4.20f1/Editor/Data/PlaybackEngines'
+Base path: 'E:/Unity/2019.4.20f1/Editor/Data', plugins path 'E:/Unity/2019.4.20f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
+Cmd: preprocessCompute
+  insize=8203 outsize=8205 ok=1
+Cmd: preprocessCompute
+  insize=9380 outsize=9382 ok=1
+Cmd: preprocessCompute
+  insize=6612 outsize=6614 ok=1
+Cmd: preprocessCompute
+  insize=8791 outsize=8793 ok=1
+Cmd: preprocess
+  insize=36421 outsize=625 ok=1
+Cmd: preprocess
+  insize=55151 outsize=2832 ok=1
+Cmd: preprocess
+  insize=103424 outsize=3507 ok=1
+Cmd: preprocess
+  insize=105371 outsize=3248 ok=1
+Cmd: preprocess
+  insize=103431 outsize=3514 ok=1
 Cmd: preprocess
   insize=68803 outsize=3372 ok=1
-Cmd: compileSnippet
-  error: 1 plat 4 at (550): implicit truncation of vector type\nCompiling Vertex program with _ADDITIONAL_LIGHTS
-Platform defines: UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING
-  api=4 type=0 insize=28710 outsize=4526 kw=_ADDITIONAL_LIGHTS pd=UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING ok=1
-Cmd: compileSnippet
-  error: 1 plat 4 at (207): pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them\nCompiling Fragment program with _ADDITIONAL_LIGHTS
-Platform defines: UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING
-  error: 1 plat 4 at (550): implicit truncation of vector type\nCompiling Fragment program with _ADDITIONAL_LIGHTS
-Platform defines: UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING
-  api=4 type=1 insize=28710 outsize=11142 kw=_ADDITIONAL_LIGHTS pd=UNITY_NO_DXT5nm UNITY_ENABLE_REFLECTION_BUFFERS UNITY_NO_CUBEMAP_ARRAY UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF2 SHADER_API_DESKTOP UNITY_LIGHTMAP_DLDR_ENCODING ok=1
